@@ -1,10 +1,11 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
-import { store } from './app/store';
+// 폴더에서 store요소를 불러오려면 폴더에 store요소를 가진 파일이 있어야한다.
+import { store } from './store';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import './index.css';
+import './global.scss';
 
 const container = document.getElementById('root')!;
 const root = createRoot(container);
