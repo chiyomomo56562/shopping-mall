@@ -7,13 +7,13 @@ pipeline {
         IMAGE_TAG = 'latest'
     }
 
-    stage('Install DockerCLI'){
-        steps {
-            sh 'apk add --no-cache docker'
-        }
-    }
-
     stages{
+        stage('Install DockerCLI'){
+            steps {
+                sh 'apk add --no-cache docker'
+            }
+        }
+
         stage('Build'){
             steps {
                 echo "Building Docker image ${IMAGE_NAME}:${IMAGE_TAG}..."
