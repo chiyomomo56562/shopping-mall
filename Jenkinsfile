@@ -10,7 +10,8 @@ pipeline {
     stages{
         stage('Install DockerCLI'){
             steps {
-                sh 'apk add --no-cache docker'
+                sh 'apt-get update'
+                sh 'apt-get install -y docker.io'
             }
         }
 
