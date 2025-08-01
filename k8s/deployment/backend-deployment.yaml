@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-app
+  labels:
+    app: backend
+spec:
+  replicas: 1 # 파드 개수 (개발 시 1개, 운영 시 2개 이상 권장)
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+      - name: backend-container
+        image: chiyomomo/shopping-mall:latest # 위에서 빌드하고 푸시한 이미지
+        ports:
+          - containerPort: 8080 # 스프링 부트 애플리케이션 포트
+        env:
+          # Secret에서 DB 연결 정보를 환경 변수로 주입합니다.
+          - name: DATABASE_URL
+            valueFrom:
+              secretKeyRef:
+                name: backend-db-secrets
+                key: DATABASE_URL
+          - name: DATABASE_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: backend-db-secrets
+                key: DATABASE_USERNAME
+          - name: DATABASE_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: backend-db-secrets
+                key: DATABASE_PASSWORD
