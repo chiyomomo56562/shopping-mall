@@ -16,6 +16,14 @@ pipeline {
         //     }
         // }
 
+        stage('Login to Docker Hub'){
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
+                    sh 'docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD'
+                }
+            }
+        }
+
         stage('Build'){
             steps {
                 echo "Building Docker image ${IMAGE_NAME}:${IMAGE_TAG}..."
