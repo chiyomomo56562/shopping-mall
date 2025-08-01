@@ -14,10 +14,12 @@ spec:
       labels:
         app: jenkins
     spec:
+      securityContext:
+        fsGroup: 999
       serviceAccountName: jenkins-admin # 아래에서 생성할 서비스 어카운트 이름
       containers:
         - name: jenkins
-          image: jenkins/jenkins:lts-jdk21
+          image: chiyomomo/jenkins-docker-jdk21
           ports:
             - name: http-port
               containerPort: 8080 # Jenkins UI 포트
@@ -26,6 +28,8 @@ spec:
           volumeMounts:
             - name: jenkins-home
               mountPath: /var/jenkins_home # Jenkins 데이터가 저장되는 경로
+            - name: docker-socket
+              mountPath: /var/run/docker.sock
           livenessProbe: # 젠킨스 컨테이너가 살아있는지 확인
             httpGet:
               path: /login
@@ -53,3 +57,7 @@ spec:
         - name: jenkins-home
           persistentVolumeClaim:
             claimName: jenkins-pvc # 위에서 생성한 PVC 이름
+        - name: docker-socket
+          hostPath:
+            path: /var/run/docker.sock
+            type: Socket

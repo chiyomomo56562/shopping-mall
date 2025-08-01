@@ -1,0 +1,11 @@
+FROM jenkins/jenkins:lts-jdk21
+
+# root 권한으로 전환
+USER root
+
+# docker-ce-cli 설치
+RUN apt-get update && \
+    apt-get install -y docker.io
+
+# jenkins 사용자로 복귀
+USER jenkins
