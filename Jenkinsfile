@@ -21,7 +21,7 @@ pipeline {
                 echo "Building Docker image ${IMAGE_NAME}:${IMAGE_TAG}..."
                 // 'docker build' 명령어가 Dockerfile에 정의된
                 // 'builder' 스테이지를 자동으로 실행하게 됩니다.
-                sh "docker build -t ${IMAGE_NAME}:${IMAGE_TAG} ."
+                sh "docker build -t ${IMAGE_NAME}:${IMAGE_TAG} ../../backend/demo"
             }
         }
 
