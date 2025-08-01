@@ -15,6 +15,13 @@ spec:
         app: jenkins
     spec:
       serviceAccountName: jenkins-admin # 아래에서 생성할 서비스 어카운트 이름
+      initContainers:
+        - name: install-docker-cli
+          image: busybox:latest
+          command: ["sh", "-c", "apk add --no-cache docker && cp /usr/bin/docker /docker-bin"]
+          volumeMounts:
+            - name: docker-bin-volume
+              mountPath: /docker-bin
       containers:
         - name: jenkins
           image: jenkins/jenkins:lts-jdk21
@@ -28,6 +35,8 @@ spec:
               mountPath: /var/jenkins_home # Jenkins 데이터가 저장되는 경로
             - name: docker-socket
               mountPath: /var/run/docker.sock
+            - name: docker-bin-volume
+              mountPath: /usr/bin/docker
           livenessProbe: # 젠킨스 컨테이너가 살아있는지 확인
             httpGet:
               path: /login
@@ -58,3 +67,5 @@ spec:
         - name: docker-socket
           hostPath:
             path: /var/run/docker.sock
+        - name: docker-bin-volume
+          emptyDir: {}
