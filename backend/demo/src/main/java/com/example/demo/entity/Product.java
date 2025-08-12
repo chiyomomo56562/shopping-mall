@@ -68,8 +68,8 @@ public class Product {
     @Column(nullable = false)
     private ProductStatus status;
     
-    @Column(nullable = false)
-    private List<String> imageUrls;
+    @OneToMany(mappedBy = "product", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    private List<ProductImage> imageUrls;
 
     // 직거래 희망지역
     @OneToOne(mappedBy = "product", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
