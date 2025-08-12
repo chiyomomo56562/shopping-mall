@@ -4,18 +4,11 @@ pipeline {
 
     environment{
         IMAGE_NAME = 'chiyomomo/shopping-mall'
-        IMAGE_TAG = 'latest'
+        IMAGE_TAG = env.BUILD_NUMBER
     }
 
 // 파이프라인 단계
     stages {
-        // stage('Install DockerCLI'){
-        //     steps {
-        //         sh 'sudo apt-get update'
-        //         sh 'sudo apt-get install -y docker.io'
-        //     }
-        // }
-
         stage('Login to Docker Hub'){
             steps {
                 withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {

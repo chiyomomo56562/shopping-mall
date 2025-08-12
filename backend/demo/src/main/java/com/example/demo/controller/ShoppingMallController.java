@@ -7,11 +7,21 @@ import org.springframework.web.bind.annotation.GetMapping;
 // import com.example.demo.service.ShoppingMallService;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/")
 public class ShoppingMallController {
     // private final ShoppingMallService shoppingMallService;
     @GetMapping("/")
     public String MainPage() {
         return "Main Page";
+    }
+
+    @GetMapping("/login")
+    public String LoginPage() {
+        return "Login Page";
+    }
+
+    @GetMapping("/signup")
+    public String SignUpPage() {
+        return "Sign Up Page";
     }
 }

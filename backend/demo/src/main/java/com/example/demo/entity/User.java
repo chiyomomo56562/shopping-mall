@@ -10,6 +10,8 @@ import jakarta.persistence.Column;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.EnumType;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -25,6 +27,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import com.example.demo.embeddable.Email;
 import com.example.demo.embeddable.Phone;
+import com.example.demo.enums.Role;
 
 @Entity
 @Table(name = "users")
@@ -42,12 +45,14 @@ public class User {
     @Column(unique = true, nullable = false, length = 50)
     private String username;
 
+    @Enumerated(EnumType.STRING)
     @Column(unique = true, nullable = false, length = 50)
     private Email email;
 
     @Column(nullable = false)
     private String password;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Phone phoneNumber;
 
@@ -66,13 +71,14 @@ public class User {
     @OneToMany(mappedBy = "reviewed", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     private List<Review> reviewsReceived;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private String role;
+    private Role role;
 
     @Column(unique = true, nullable = false, length = 50)
     private String nickname;
 
-    @Column(unique = true, nullable = false)
+    @Column(unique = false, nullable = true)
     private String profileImage;
 
     @CreatedDate

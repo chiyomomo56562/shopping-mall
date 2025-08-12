@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: backend-container
-        image: chiyomomo/shopping-mall:latest # 위에서 빌드하고 푸시한 이미지
+        image: chiyomomo/shopping-mall:latest
         ports:
           - containerPort: 8080 # 스프링 부트 애플리케이션 포트
         env:
