@@ -23,8 +23,8 @@ public class SecurityConfig {
                 // 인증 없이 접근 가능한 경로
                 .requestMatchers("/", "/css/**", "/js/**", "/images/**", "/login", "/signup").permitAll()
                 // 특정 역할(ROLE_ADMIN)이 필요한 경로
-                .requestMatchers("/myPage").hasRole("ROLE_USER")
-                .requestMatchers("/admin/**").hasRole("ROLE_ADMIN")
+                .requestMatchers("/myPage").hasRole("USER")
+                .requestMatchers("/admin/**").hasRole("ADMIN")
                 // 그 외 모든 요청은 인증 필요
                 .anyRequest().authenticated()
             )

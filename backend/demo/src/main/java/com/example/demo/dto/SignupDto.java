@@ -26,7 +26,7 @@ public class SignupDto {
                 .profileImage(profileImage)
                 .phoneNumber(new Phone(phoneNumber))
                 .email(new Email(email))
-                .role(Role.ROLE_USER)
+                .role(Role.USER)
                 .build();
     }
 }

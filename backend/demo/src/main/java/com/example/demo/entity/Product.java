@@ -62,11 +62,11 @@ public class Product {
     
     //상품 상태
     @Column(nullable = false)
-    private ProductCondition condition;
+    private ProductCondition product_condition;
 
     // 판매 상태
     @Column(nullable = false)
-    private ProductStatus status;
+    private ProductStatus product_status;
     
     @OneToMany(mappedBy = "product", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     private List<ProductImage> imageUrls;
