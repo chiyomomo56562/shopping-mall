@@ -7,7 +7,7 @@
     <h2>회원 가입</h2>
     <form th:action="@{/signup}" th:object="${signupDto}" method="post">
         <div>
-            <label for="username">사용자 이름:</label>
+            <label for="username">id:</label>
             <input type="text" id="username" th:field="*{username}" required>
         </div>
         <div>
@@ -21,6 +21,10 @@
         <div>
             <label for="passwordConfirm">비밀번호 확인:</label>
             <input type="password" id="passwordConfirm" th:field="*{passwordConfirm}" required>
+        </div>
+        <div>
+            <label for="nickname">닉네임:</label>
+            <input type="text" id="nickname" th:field="*{nickname}" required>
         </div>
         <div>
             <label for="phoneNumber">전화번호:</label>
