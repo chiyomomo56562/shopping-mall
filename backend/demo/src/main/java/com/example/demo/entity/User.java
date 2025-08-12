@@ -45,14 +45,12 @@ public class User {
     @Column(unique = true, nullable = false, length = 50)
     private String username;
 
-    @Enumerated(EnumType.STRING)
     @Column(unique = true, nullable = false, length = 50)
     private Email email;
 
     @Column(nullable = false)
     private String password;
 
-    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Phone phoneNumber;
 

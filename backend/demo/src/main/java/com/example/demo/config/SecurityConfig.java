@@ -31,9 +31,10 @@ public class SecurityConfig {
             
             // 폼 기반 로그인 설정
             .formLogin(form -> form
-                .loginPage("/login")                 // 커스텀 로그인 페이지 URL
+                .loginPage("/usr/login")
+                .loginProcessingUrl("/login")
                 .defaultSuccessUrl("/", true)        // 로그인 성공 시 리디렉션될 기본 페이지
-                .failureUrl("/login?error=true")     // 로그인 실패 시 리디렉션될 페이지
+                .failureUrl("/usr/login?error=true")     // 로그인 실패 시 리디렉션될 페이지
                 .permitAll()                         // 로그인 페이지 접근은 모두 허용
             )
             

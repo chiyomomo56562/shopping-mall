@@ -14,7 +14,6 @@ public class SignupDto {
     private String password;
     private String passwordConfirm;
     private String nickname;
-    private String profileImage;
     private String phoneNumber;
     private String email;
 
@@ -23,7 +22,6 @@ public class SignupDto {
                 .username(username)
                 .password(encodedPassword)
                 .nickname(nickname)
-                .profileImage(profileImage)
                 .phoneNumber(new Phone(phoneNumber))
                 .email(new Email(email))
                 .role(Role.USER)

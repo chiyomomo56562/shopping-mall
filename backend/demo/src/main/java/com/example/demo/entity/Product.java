@@ -16,6 +16,8 @@ import java.util.List;
 import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.EnumType;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -61,10 +63,12 @@ public class Product {
     private Long price;    
     
     //상품 상태
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private ProductCondition product_condition;
 
     // 판매 상태
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private ProductStatus product_status;
     
