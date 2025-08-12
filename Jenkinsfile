@@ -4,7 +4,7 @@ pipeline {
 
     environment{
         IMAGE_NAME = 'chiyomomo/shopping-mall'
-        IMAGE_TAG = env.BUILD_NUMBER
+        IMAGE_TAG = "${env.BUILD_NUMBER}"
     }
 
 // 파이프라인 단계
