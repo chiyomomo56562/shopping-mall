@@ -19,10 +19,10 @@ import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
-public class ShoppingMallController {
-    private final ProductService productService;
+public class MainController {
+    // private final ProductService productService;
     // private final ShoppingMallService shoppingMallService;
-    private final WishListService wishListService;
+    // private final WishListService wishListService;
 
     @GetMapping("/")
     public String MainPage(Model model) {
@@ -32,13 +32,14 @@ public class ShoppingMallController {
             model.addAttribute("nickname", username);
         }
         // 메인 화면에 표시할 상품 목록 추가
-        List<Product> popularProducts = productService.getPopularProducts();
-        model.addAttribute("products", popularProducts);
+        // 24시간 동안 조회수가 가장 많은 상품을 보여줘야한다.
+        // List<Product> popularProducts = productService.getPopularProducts();
+        // model.addAttribute("products", popularProducts);
 
         // 찜한 상품 목록 수 추가 (로그인 상태일 때만)
-        if (!"anonymousUser".equals(username)) {
-            long wishListCount = wishListService.countWishListsByUsername(username);
-            model.addAttribute("wishListCount", wishListCount);
+        // if (!"anonymousUser".equals(username)) {
+        //     long wishListCount = wishListService.countWishListsByUsername(username);
+        //     model.addAttribute("wishListCount", wishListCount);
         // }
 
         // 카테고리 목록 추가

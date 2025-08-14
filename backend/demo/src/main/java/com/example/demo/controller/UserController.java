@@ -39,12 +39,12 @@ public class UserController {
         return "redirect:/login";
     }
 
-    // 비밀번호 재설정
-    @PostMapping("/user/password/reset")
-    public String resetPassword(@ModelAttribute SignupDto signupDto) {
-        // userService.resetPassword(signupDto);
-        return "redirect:/login";
-    }
+    // // 비밀번호 재설정
+    // @PostMapping("/user/password/reset")
+    // public String resetPassword(@ModelAttribute SignupDto signupDto) {
+    //     // userService.resetPassword(signupDto);
+    //     return "redirect:/login";
+    // }
 
     // // 마이페이지
     // @GetMapping("/user/myPage")

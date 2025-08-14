@@ -21,16 +21,20 @@
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             width: 350px;
             text-align: center;
+            /* Flexbox를 사용하여 내부 요소들을 수직으로 배치 */
+            display: flex;
+            flex-direction: column;
+            gap: 15px; /* 요소들 사이의 간격 추가 */
         }
         h2 {
-            margin-bottom: 20px;
+            margin-bottom: 5px; /* 제목 아래 여백 줄이기 */
             color: #333;
         }
         .message {
-            margin-bottom: 15px;
             padding: 10px;
             border-radius: 5px;
             font-weight: bold;
+            margin-bottom: 10px;
         }
         .error {
             background-color: #fdd;
@@ -43,7 +47,6 @@
             border: 1px solid #4f8a10;
         }
         .form-group {
-            margin-bottom: 15px;
             text-align: left;
         }
         .form-group label {
@@ -75,6 +78,9 @@
         }
         .links {
             margin-top: 15px;
+            /* 링크를 중앙에 배치 */
+            display: flex;
+            justify-content: center;
         }
         .links a {
             color: #007bff;
@@ -89,13 +95,9 @@
 <body>
     <div class="login-container">
         <h2>로그인</h2>
-        <!-- Thymeleaf 코드를 주석 처리하여 HTML만 표시 -->
-        <!-- <div th:if="${param.error}" class="message error">
-            잘못된 사용자 이름 또는 비밀번호입니다.
-        </div>
-        <div th:if="${param.logout}" class="message logout">
-            로그아웃되었습니다.
-        </div> -->
+
+        <!-- 에러 메시지 표시를 위한 div -->
+        <div id="message-box"></div>
 
         <form action="/login" method="post">
             <div class="form-group">
@@ -113,5 +115,19 @@
             <a href="/signup">회원가입</a>
         </div>
     </div>
+
+    <script>
+        // 페이지 로드 시 URL 파라미터를 확인하여 메시지를 표시합니다.
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const messageBox = document.getElementById('message-box');
+
+            if (urlParams.has('error')) {
+                messageBox.innerHTML = '<div class="message error">잘못된 사용자 이름 또는 비밀번호입니다.</div>';
+            } else if (urlParams.has('logout')) {
+                messageBox.innerHTML = '<div class="message logout">로그아웃되었습니다.</div>';
+            }
+        });
+    </script>
 </body>
 </html>

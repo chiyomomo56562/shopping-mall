@@ -20,23 +20,23 @@ import lombok.RequiredArgsConstructor;
 public class WishListController {
     private final WishListService wishListService;
     
-    // 위시리스트 조회
-    @GetMapping("/wishList")
-    public String wishList(Principal principal) {
-        return "wishList";
-    }
+    // // 위시리스트 조회
+    // @GetMapping("/wishList")
+    // public String wishList(Principal principal) {
+    //     return "wishList";
+    // }
 
-    // 위시리스트 추가
-    @PostMapping("/wishList/add/{productId}")
-    public String addWishList(Principal principal, @PathVariable Long productId) {
-        // wishListService.addWishList(productId);
-        return "redirect:/product/" + productId;
-    }
+    // // 위시리스트 추가
+    // @PostMapping("/wishList/add/{productId}")
+    // public String addWishList(Principal principal, @PathVariable Long productId) {
+    //     // wishListService.addWishList(productId);
+    //     return "redirect:/product/" + productId;
+    // }
 
-    // 위시리스트 삭제
-    @DeleteMapping("/wishList/delete/{productId}")
-    public String deleteWishList(Principal principal, @PathVariable Long productId) {
-        // wishListService.deleteWishList(productId);
-        return "redirect:/product/" + productId;
-    }
+    // // 위시리스트 삭제
+    // @DeleteMapping("/wishList/delete/{productId}")
+    // public String deleteWishList(Principal principal, @PathVariable Long productId) {
+    //     // wishListService.deleteWishList(productId);
+    //     return "redirect:/product/" + productId;
+    // }
 }
