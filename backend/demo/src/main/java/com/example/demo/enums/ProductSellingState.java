@@ -1,6 +1,6 @@
 package com.example.demo.enums;
 
-public enum ProductStatus {
+public enum ProductSellingState {
     ON_SALE,
     RESERVED,
     COMPLETED,

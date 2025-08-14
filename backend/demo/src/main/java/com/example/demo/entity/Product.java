@@ -23,8 +23,8 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import lombok.*;
-import com.example.demo.enums.ProductCondition;
-import com.example.demo.enums.ProductStatus;
+import com.example.demo.enums.ProductState;
+import com.example.demo.enums.ProductSellingState;
 
 @Entity
 @Table(name = "products")
@@ -64,16 +64,16 @@ public class Product {
     
     //상품 상태
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private ProductCondition product_condition;
+    @Column(nullable = false, name = "product_state")
+    private ProductState productState;
 
     // 판매 상태
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private ProductStatus product_status;
+    private ProductSellingState productSellingState;
     
-    @OneToMany(mappedBy = "product", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
-    private List<ProductImage> imageUrls;
+    // @OneToMany(mappedBy = "product", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    // private List<ProductImage> imageUrls;
 
     // 직거래 희망지역
     @OneToOne(mappedBy = "product", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)

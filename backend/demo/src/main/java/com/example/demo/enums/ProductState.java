@@ -1,6 +1,6 @@
 package com.example.demo.enums;
 
-public enum ProductCondition {
+public enum ProductState {
     NEW,
     ALMOST_NEW,
     USED,
