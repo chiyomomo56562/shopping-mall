@@ -21,8 +21,8 @@ public class SecurityConfig {
             // HTTP 요청에 대한 인가 규칙 설정
             .authorizeHttpRequests(authorize -> authorize
                 // 인증 없이 접근 가능한 경로
-                .requestMatchers("/", "/css/**", "/js/**", "/images/**", "/login", "/signup").permitAll()
-                // 특정 역할(ROLE_ADMIN)이 필요한 경로
+                .requestMatchers("/", "/css/**", "/js/**", "/images/**", "/usr/login", "/login", "/signup").permitAll()
+                // 특정 역할(ROLE_USER)이 필요한 경로
                 .requestMatchers("/myPage").hasRole("USER")
                 .requestMatchers("/admin/**").hasRole("ADMIN")
                 // 그 외 모든 요청은 인증 필요
@@ -36,6 +36,11 @@ public class SecurityConfig {
                 .defaultSuccessUrl("/", true)        // 로그인 성공 시 리디렉션될 기본 페이지
                 .failureUrl("/usr/login?error=true")     // 로그인 실패 시 리디렉션될 페이지
                 .permitAll()                         // 로그인 페이지 접근은 모두 허용
+                // .oauth2Login(oauth2 -> oauth2
+                //     .loginPage("/usr/login")
+                //     .defaultSuccessUrl("/", true)
+                //     .permitAll()
+                // )
             )
             
             // 로그아웃 설정

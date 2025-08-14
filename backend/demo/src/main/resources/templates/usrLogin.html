@@ -1,31 +1,117 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="ko">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>로그인</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .login-container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 350px;
+            text-align: center;
+        }
+        h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .message {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .error {
+            background-color: #fdd;
+            color: #d8000c;
+            border: 1px solid #d8000c;
+        }
+        .logout {
+            background-color: #dff0d8;
+            color: #4f8a10;
+            border: 1px solid #4f8a10;
+        }
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+            font-size: 14px;
+        }
+        .form-group input {
+            width: 90%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .links {
+            margin-top: 15px;
+        }
+        .links a {
+            color: #007bff;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .links a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-    <h2>로그인 페이지</h2>
-
-    <div th:if="${param.error}" style="color:red;">
-        잘못된 사용자 이름 또는 비밀번호입니다.
-    </div>
-    
-    <div th:if="${param.logout}" style="color:green;">
-        로그아웃되었습니다.
-    </div>
-
-    <form th:action="@{/login}" method="post">
-        <div>
-            <label for="username">사용자 이름:</label>
-            <input type="text" id="username" name="username" required>
+    <div class="login-container">
+        <h2>로그인</h2>
+        <!-- Thymeleaf 코드를 주석 처리하여 HTML만 표시 -->
+        <!-- <div th:if="${param.error}" class="message error">
+            잘못된 사용자 이름 또는 비밀번호입니다.
         </div>
-        <div>
-            <label for="password">비밀번호:</label>
-            <input type="password" id="password" name="password" required>
-        </div>
-        <button type="submit">로그인</button>
-    </form>
+        <div th:if="${param.logout}" class="message logout">
+            로그아웃되었습니다.
+        </div> -->
 
-    <a th:href="@{/signup}">회원가입</a>
+        <form action="/login" method="post">
+            <div class="form-group">
+                <label for="username">사용자 이름:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">비밀번호:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit">로그인</button>
+        </form>
+
+        <div class="links">
+            <a href="/signup">회원가입</a>
+        </div>
+    </div>
 </body>
 </html>

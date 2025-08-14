@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <title>중고거래 쇼핑몰</title>
+</head>
+<body>
+
+    <header>
+        <h1>중고거래 쇼핑몰</h1>
+        <div sec:authorize="isAuthenticated()">
+            <span th:text="${nickname}">사용자님</span>님, 환영합니다!
+            <a href="/wishlist">찜한 목록 (<span th:text="${wishListCount}">0</span>)</a>
+            <a href="/logout">로그아웃</a>
+        </div>
+        <div sec:authorize="isAnonymous()">
+            <a href="/login">로그인</a>
+            <a href="/signup">회원가입</a>
+        </div>
+    </header>
+
+    <hr>
+
+    <main>
+        <h2>상품 검색</h2>
+        <form action="/search" method="get">
+            <input type="text" name="keyword" placeholder="상품명 검색...">
+            <button type="submit">검색</button>
+        </form>
+
+        <h2>카테고리별 상품</h2>
+        <nav>
+            <ul>
+                <li th:each="category : ${categories}">
+                    <a th:href="@{/search(category=${category.name()})}" th:text="${category.getDisplayName()}">카테고리</a>
+                </li>
+            </ul>
+        </nav>
+
+        <hr>
+
+        <h2>인기 상품 목록</h2>
+        <div th:if="${not #lists.isEmpty(products)}">
+            <div th:each="product : ${products}">
+                <h3 th:text="${product.getName()}">상품명</h3>
+                <p th:text="${product.getDescription()}">상품 설명</p>
+                <p>가격: <span th:text="${product.getPrice()}"></span>원</p>
+                <div sec:authorize="isAuthenticated()">
+                    <form th:action="@{/wishlist/add}" method="post">
+                        <input type="hidden" name="productId" th:value="${product.getId()}">
+                        <button type="submit">찜하기</button>
+                    </form>
+                </div>
+                <hr>
+            </div>
+        </div>
+        <div th:if="${#lists.isEmpty(products)}">
+            <p>등록된 상품이 없습니다.</p>
+        </div>
+    </main>
+
+    <hr>
+
+    <footer>
+        <p>채팅창 목록</p>
+        </footer>
+
+</body>
+</html>
