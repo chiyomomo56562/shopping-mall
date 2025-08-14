@@ -40,7 +40,7 @@ public class Product {
     private Long id;
     
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user", nullable = false)
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
     @OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
@@ -50,7 +50,7 @@ public class Product {
     private List<WishList> wishLists;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "category", nullable = false)
+    @JoinColumn(name = "category_id", nullable = false)
     private Category category;
     
     @Column(nullable = false)
@@ -72,8 +72,8 @@ public class Product {
     @Column(nullable = false)
     private ProductSellingState productSellingState;
     
-    // @OneToMany(mappedBy = "product", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
-    // private List<ProductImage> imageUrls;
+    @OneToMany(mappedBy = "product", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    private List<ProductImage> imageUrls;
 
     // 직거래 희망지역
     @OneToOne(mappedBy = "product", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)

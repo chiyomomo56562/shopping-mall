@@ -35,11 +35,11 @@ public class Address {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user", nullable = true)
+    @JoinColumn(name = "user_id", nullable = true)
     private User user;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="product", nullable = true)
+    @JoinColumn(name="product_id", nullable = true)
     private Product product;
 
     // 주소

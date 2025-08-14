@@ -41,13 +41,13 @@ public class Category {
     private String name;
     
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "parent", nullable = true)
+    @JoinColumn(name = "parent_id", nullable = true)
     private Category parent;
 
     @OneToMany(mappedBy = "parent", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     private List<Category> children;
 
-    @OneToMany(mappedBy = "category", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "category_id", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     private List<Product> products;
     
     @CreatedDate

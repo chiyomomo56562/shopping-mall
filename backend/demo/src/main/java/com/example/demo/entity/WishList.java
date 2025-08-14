@@ -33,11 +33,11 @@ public class WishList {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user", nullable = false)
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "product", nullable = false)
+    @JoinColumn(name = "product_id", nullable = false)
     private Product product;
 
     @CreatedDate

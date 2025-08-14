@@ -36,11 +36,11 @@ public class ChatRoom {
     private Long id;
     
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "seller", nullable = true)
+    @JoinColumn(name = "seller_id", nullable = true)
     private User seller;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "buyer", nullable = true)
+    @JoinColumn(name = "buyer_id", nullable = true)
     private User buyer;
 
     @OneToMany(mappedBy = "chatRoom", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)

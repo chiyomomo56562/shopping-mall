@@ -30,15 +30,15 @@ public class Transaction {
     private Long id;
     
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "seller", nullable = true)
+    @JoinColumn(name = "seller_id", nullable = true)
     private User seller;
     
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "buyer", nullable = true)
+    @JoinColumn(name = "buyer_id", nullable = true)
     private User buyer;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "product", nullable = true)
+    @JoinColumn(name = "product_id", nullable = true)
     private Product product;
     
     @Column(nullable = false)
