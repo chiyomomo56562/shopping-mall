@@ -18,12 +18,12 @@ public class WishListService {
 
     public long countWishListsByUsername(String username) {
         // 특정 사용자의 위시리스트 개수를 조회
-        return wishListRepository.countByUsername(username);
+        return wishListRepository.countByUser_Username(username);
     }
 
     public boolean existsByUsernameAndProductId(String username, Long productId) {
         // 특정 사용자의 위시리스트에 특정 상품이 존재하는지 확인
-        return wishListRepository.existsByUsernameAndProductId(username, productId);
+        return wishListRepository.existsByUser_UsernameAndProductId(username, productId);
     }
 
     public void deleteByUsernameAndProductId(String username, Long productId) {
@@ -35,7 +35,7 @@ public class WishListService {
         // 특정 사용자의 위시리스트에 특정 상품을 추가
 
         // 이미 위시리스트에 추가된 상품이면 예외 발생
-        if (wishListRepository.existsByUsernameAndProductId(username, productId)) { throw new IllegalStateException("Product already in wishlist"); }
+        if (wishListRepository.existsByUser_UsernameAndProductId(username, productId)) { throw new IllegalStateException("Product already in wishlist"); }
 
         // 위시리스트에 추가
         WishList wishList = new WishList();

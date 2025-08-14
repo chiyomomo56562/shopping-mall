@@ -11,18 +11,17 @@ public interface WishListRepository extends JpaRepository<WishList, Long> {
 
     // 위시 리스트를 조회할 때, 
     // product, user의 정보를 포함해서 조회하지 않으면 n+1문제가 발생한다.
-
     @Query("SELECT w FROM WishList w JOIN FETCH w.product p JOIN FETCH p.user u WHERE u.username = :username")
     List<WishList> findAllWithProductAndUser(@Param("username") String username);
     
     // 특정 사용자의 위시리스트 목록을 조회
-    List<WishList> findByUsername(String username);
+    List<WishList> findByUser_Username(String username);
 
     // 특정 사용자의 위시리스트 개수를 조회
-    long countByUsername(String username);
+    long countByUser_Username(String username);
 
     // 특정 사용자의 위시리스트에 특정 상품이 존재하는지 확인
-    boolean existsByUsernameAndProductId(String username, Long productId);
+    boolean existsByUser_UsernameAndProductId(String username, Long productId);
 
     // 특정 사용자의 위시리스트에 특정 상품을 삭제
     void deleteByUsernameAndProductId(String username, Long productId);

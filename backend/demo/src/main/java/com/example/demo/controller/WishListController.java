@@ -18,7 +18,7 @@ import lombok.RequiredArgsConstructor;
 @Controller
 @RequiredArgsConstructor
 public class WishListController {
-    private final WishListService wishListService;
+    // private final WishListService wishListService;
     
     // // 위시리스트 조회
     // @GetMapping("/wishList")
