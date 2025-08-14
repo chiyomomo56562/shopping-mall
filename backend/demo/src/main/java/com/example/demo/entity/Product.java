@@ -64,7 +64,7 @@ public class Product {
     
     //상품 상태
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false, name = "product_state")
+    @Column(nullable = false)
     private ProductState productState;
 
     // 판매 상태

@@ -47,7 +47,7 @@ public class Category {
     @OneToMany(mappedBy = "parent", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     private List<Category> children;
 
-    @OneToMany(mappedBy = "category_id", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "category", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     private List<Product> products;
     
     @CreatedDate
