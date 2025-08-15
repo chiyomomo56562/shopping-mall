@@ -15,14 +15,14 @@ public interface WishListRepository extends JpaRepository<WishList, Long> {
     List<WishList> findAllWithProductAndUser(@Param("userId") Long userId);
     
     // 특정 사용자의 위시리스트 목록을 조회
-    List<WishList> findByUser_UserId(Long userId);
+    List<WishList> findByUser_Id(Long userId);
 
     // 특정 사용자의 위시리스트 개수를 조회
-    long countByUser_UserId(Long userId);
+    long countByUser_Id(Long userId);
 
     // 특정 사용자의 위시리스트에 특정 상품이 존재하는지 확인
-    boolean existsByUser_UserIdAndProductId(Long userId, Long productId);
+    boolean existsByUser_IdAndProductId(Long userId, Long productId);
 
     // 특정 사용자의 위시리스트에 특정 상품을 삭제
-    void deleteByUser_UserIdAndProductId(Long userId, Long productId);
+    void deleteByUser_IdAndProductId(Long userId, Long productId);
 }
